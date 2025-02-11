@@ -108,12 +108,19 @@ insert into payment values
 (108,"Lucas","Netbanking","Boston"),
 (109,"Isabella","Netbanking","Nashville"),
 (110,"Jackson","Credit Card","Boston");
-
+ 
 select mode ,count(id) from payment
-group by mode
+group by mode;
 
+select * from payment;
 
+update payment
+set mode ="UPI"
+where mode = "Netbanking";
 
+ set sql_safe_updates = 0;
+ 
+ 
 
 
 
