@@ -1,3 +1,4 @@
+-- 1st question--
 create database college;
 use college;
 
@@ -14,4 +15,113 @@ insert into student values
 (103,"Rohan");
 
 insert into student values (104,"Vaibhav");
+
+-- 2 question--
+
+create database xyz;
+use xyz;
+
+create table info (
+
+id int primary key,
+name varchar(50),
+salart int 
+);
+
+insert into info values
+(1,"adam" ,25000),(2,"bob" ,30000),(3,"casey" ,40000);
+
+select * from info;
+
+
+-- 3rd question --
+
+create database school;
+use school;
+create table children(
+
+rollno int primary key,
+name varchar(50),
+marks int not null,
+grade varchar(1),
+city varchar(20)
+);
+
+insert into children values
+(101,"Aryan",100,"A","Agra"),
+(102,"Raj",40,"D","Jaipur"),
+(103,"Vaibhav",90,"B","Nasik"),
+(104,"Mahak",98,"A","Agra"),
+(105,"Rohan",20,"F","Delhi"),
+(106,"Sujal",52,"C","Kota");
+
+select * from children;
+
+select name ,marks from children;
+
+select distinct city from children;
+
+select * from children where marks > 80;
+
+select * from children where city = "Agra";
+
+select * from children where marks > 50 and marks <=100;
+
+select * from children where marks between 50 and 100;
+
+select * from children where city in ("Agra","Delhi");
+
+select * from children order by marks asc;
+select * from children order by marks desc;
+
+select * from children order by city asc;
+
+select max(marks) from children;
+select min(marks) from children;
+select avg(marks) from children;
+select sum(marks) from children;
+select count(marks) from children;
+
+select city ,count(rollno)
+from children 
+group by city;
+
+-- 4th question--
+
+create database company;
+use company;
+create table payment( 
+id int primary key,
+name varchar(50),
+mode varchar(50),
+city varchar(40)
+);
+
+insert into payment values
+(101,"Ovilia Barrett","Netbanking","Poland"),
+(102,"Ehan","Credit Card","Miami"),
+(103,"Maya","Credit Card","Seattle"),
+(104,"Liam","Netbanking","Denver"),
+(105,"Sophia","Credit Card","Orleans"),
+(106,"Caleb","Debit Card","Minneapolis"),
+(107,"Ava","Debit Card","Phoenix"),
+(108,"Lucas","Netbanking","Boston"),
+(109,"Isabella","Netbanking","Nashville"),
+(110,"Jackson","Credit Card","Boston");
+
+select mode ,count(id) from payment
+group by mode
+
+
+
+
+
+
+
+
+
+
+
+
+
 
