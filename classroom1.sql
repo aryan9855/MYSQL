@@ -53,7 +53,19 @@ insert into children values
 (103,"Vaibhav",90,"B","Nasik"),
 (104,"Mahak",98,"A","Agra"),
 (105,"Rohan",20,"F","Delhi"),
-(106,"Sujal",52,"C","Kota");
+(106,"Sujal",52,"C","Gwalior");
+
+alter table children
+add column age int not null default 18;
+
+alter table children
+drop column age;
+
+alter table children
+modify column age varchar(2);
+
+alter table children
+change age children_age int;
 
 select * from children;
 
@@ -86,6 +98,8 @@ select city ,count(rollno)
 from children 
 group by city;
 
+ delete from children where marks <50;
+
 -- 4th question--
 
 create database company;
@@ -117,8 +131,50 @@ select * from payment;
 update payment
 set mode ="UPI"
 where mode = "Netbanking";
+ 
+ -- question 5 --
+ 
+create database teacher_info;
+use teacher_info;
+create table dept(
 
- set sql_safe_updates = 0;
+id int primary key,
+name varchar(50)
+);
+
+insert into dept values
+(101,"english"),
+(102,"maths");
+
+select * from dept;
+
+update dept 
+set id = 103
+where id = 102;
+
+create table teachers(
+id int primary key,
+name varchar(50),
+dept_id int,
+foreign key(dept_id) references dept(id)
+on delete cascade
+on update cascade
+);
+
+insert into teachers values
+(101,"Adam",101),
+(102,"Eve",102);
+
+select * from teachers;
+
+
+
+
+ 
+ 
+ 
+ 
+ 
  
  
 
