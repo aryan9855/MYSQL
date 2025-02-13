@@ -167,15 +167,101 @@ insert into teachers values
 
 select * from teachers;
 
+-- question 6 --
+
+create database joins;
+
+use joins;
+
+create table students (
+student_id int primary key,
+name varchar(50)
+);
+
+insert into students values
+(101,"adam"),
+(102,"bob"),
+(103,"casey");
+
+create table course(
+student_id int primary key ,
+course varchar(50)
+);
+
+insert into course values
+(102,"english"),
+(105,"math"),
+(103,"science"),
+(107,"computer science");
+
+
+select * from students
+inner join course on students.student_id = course.student_id;
+
+select * from students
+left join course on students.student_id = course.student_id;
+ 
+select * from students
+right join course on students.student_id = course.student_id;
+ 
+ 
+select * from students
+left join course on students.student_id = course.student_id
+union
+select * from students
+right join course on students.student_id = course.student_id;
+
+ 
+select * from students
+left join course on students.student_id = course.student_id
+where course.student_id is null;
+
+select * from students
+right join course on students.student_id = course.student_id
+where students.student_id is null;
+
+select student_id from students
+union
+select student_id from course;
+
+-- question 7--
+
+create database subQuer;
+use subQuer;
+create table people(
+
+rollno int primary key,
+name varchar(50),
+marks int not null,
+grade varchar(1),
+city varchar(20)
+);
+
+insert into people values
+(101,"Aryan",100,"A","Agra"),
+(102,"Raj",40,"D","Jaipur"),
+(103,"Vaibhav",90,"B","Nasik"),
+(104,"Mahak",98,"A","Agra"),
+(105,"Rohan",20,"F","Delhi"),
+(106,"Sujal",52,"C","Gwalior");
+
+select * from people;
+
+select name from people where marks > (select avg(marks) from people); -- sub queries--
+
+select name from people where rollno in (select rollno from people where rollno % 2 = 0);
+
+select max(marks) from (select * from people where city = "Agra") as temp ;
+
+create view view1 as
+select rollno, name , marks from people;
+
+select * from view1;
 
 
 
- 
- 
- 
- 
- 
- 
+
+
  
 
 
